@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画布-svg-canvas</title>
+    <script src="js/d3.min.js"></script>
+</head>
+<body>
+
+
+    <script>
+        // 添加画布
+        let width=300;
+        let height=300;
+
+        let svg=d3.select("body")
+            .append("svg")
+            .attr("width",width)
+            .attr("height",height);
+
+        // 数据
+        let dataset=[250,210,170,130,87];
+        let rect_height=25; // 每个矩形所占的像素高度
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x",20)
+            .attr("y",function (d,i) {
+                return i*rect_height;
+            })
+            .attr("width",function (d) {
+                return d
+            })
+            .attr("height",rect_height-2)
+            .attr("fill","steelblue");
+
+    </script>
+
+</body>
+</html>

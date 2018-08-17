@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择元素和绑定数据</title>
+    <script src="js/d3.min.js"></script>
+</head>
+<body>
+<p>我是p元素</p>
+<p>我是p元素</p>
+<p>我是p元素</p>
+    <script>
+        /*
+        * 选取元素
+        *
+        * d3.select()：是选择所有指定元素的第一个
+          d3.selectAll()：是选择指定元素的全部
+        * */
+        let body=d3.select("body"); //选择文档中的body元素
+        let p1=body.select(("p")); // 选取body中的第一个p元素
+        let p=body.selectAll(("p")); // 选取body中的所有p元素
+        let svg = body.select("svg");   //选择body中的svg元素
+        let rects = svg.selectAll("rect");  //选择svg中所有的rect元素
+    </script>
+
+    <script>
+        /*
+        * 绑定数据
+        * datum()：绑定一个数据到选择集上
+          data()：绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定
+        * */
+       let str="China";
+       let body_=d3.select("body");
+       let p_=body.selectAll("p");
+        p_.datum(str);
+        p_.text(function (d,i) {
+            return "第"+i+"个元素绑定的数据是"+d;
+        })
+    </script>
+</body>
+</html>
