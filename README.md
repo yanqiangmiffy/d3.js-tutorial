@@ -8,7 +8,7 @@ d3.js 学习资料与教程
   - [03-D3.js 改变元素的方法.md](https://github.com/yanqiangmiffy/d3.js-tutorial/blob/master/tutorials/03-D3.js%20%E6%94%B9%E5%8F%98%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E6%B3%95.md)
   - [04-D3.js svg画布.md](https://github.com/yanqiangmiffy/d3.js-tutorial/blob/master/tutorials/04-D3.js%20svg%E7%94%BB%E5%B8%83.md)
   - [05-D3.js 比列尺.md](https://github.com/yanqiangmiffy/d3.js-tutorial/blob/master/tutorials/05-D3.js%20%E6%AF%94%E5%88%97%E5%B0%BA.md)
-  - [06-D3.js 坐标轴(axis).md](https://github.com/yanqiangmiffy/d3.js-tutorial/blob/master/tutorials/06-D3.js 坐标轴(axis).md)
+  - [06-D3.js 坐标轴(axis).md](https://github.com/yanqiangmiffy/d3.js-tutorial/blob/master/tutorials/06-D3.js%20%E5%9D%90%E6%A0%87%E8%BD%B4(axis).md)
 - 实例：
   - 01-hello_world.html
   - 02-select-bind.html
