@@ -8,36 +8,58 @@
 <body>
 
 
-<svg  width="1005cm" height="5cm">
-    <desc>这是一个坐标轴</desc>
-    <g fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
-        <path class="domain" stroke="#000" d="M0.5,6V0.5H880.5V6"></path>
-        <g class="tick" opacity="1" transform="translate(0.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">0.0</text>
-        </g>
-        <g class="tick" opacity="1" transform="translate(176.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">0.2</text>
-        </g>
-        <g class="tick" opacity="1" transform="translate(352.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">0.4</text>
-        </g>
-        <g class="tick" opacity="1" transform="translate(528.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">0.6</text>
-        </g>
-        <g class="tick" opacity="1" transform="translate(704.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">0.8</text>
-        </g>
-        <g class="tick" opacity="1" transform="translate(880.5,0)">
-            <line stroke="#000" y2="6"></line>
-            <text fill="#000" y="9" dy="0.71em">1.0</text>
-        </g>
-    </g>
-</svg>
+<svg width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    var svg = d3.select("svg"),
+        margin = {top: 20, right: 0, bottom: 20, left: 0},
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var formatNumber = d3.format(".1f");
+
+    var x = d3.scaleTime()
+        .domain([new Date(2010, 7, 1), new Date(2012, 7, 1)])
+        .range([0, width]);
+
+    var y = d3.scaleLinear()
+        .domain([0, 2e6])
+        .range([height, 0]);
+
+    var xAxis = d3.axisBottom(x)
+        .ticks(d3.timeYear);
+
+    var yAxis = d3.axisRight(y)
+        .tickSize(width)
+        .tickFormat(function(d) {
+            var s = formatNumber(d / 1e6);
+            return this.parentNode.nextSibling
+                ? "\xa0" + s
+                : "$" + s + " million";
+        });
+
+    g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(customXAxis);
+
+    g.append("g")
+        .call(customYAxis);
+
+    function customXAxis(g) {
+        g.call(xAxis);
+        g.select(".domain").remove();
+    }
+
+    function customYAxis(g) {
+        g.call(yAxis);
+        g.select(".domain").remove();
+        g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
+        g.selectAll(".tick text").attr("x", 4).attr("dy", -4);
+    }
+
+</script>
 
 </body>
 </html>
