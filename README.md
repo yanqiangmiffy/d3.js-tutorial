@@ -17,6 +17,18 @@ d3.js 学习资料与教程
     datum()：绑定一个数据到选择集上
     data()：绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定
     ```
+    **改变元素的其他方法**
+    ```
+    selection.attr(name[, value]) 改变元素的属性值
+
+    eg:a.attr("href","https://www.baidu.com")
+
+    selection.text([value])  改变元素的文本
+
+    selection.style(name[, value[, priority]]) 改变元素的样式
+
+    selection.classed(names[, value]) 给元素添加css样式
+    ```
   - 03-select-insert-delete.html
 
     **插入元素**：

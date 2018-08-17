@@ -9,6 +9,7 @@
 <p>我是p元素</p>
 <p>我是p元素</p>
 <p>我是p元素</p>
+<a href="#" target="_blank">我是一个连接</a>
     <script>
         /*
         * 选取元素
@@ -35,7 +36,12 @@
         p_.datum(str);
         p_.text(function (d,i) {
             return "第"+i+"个元素绑定的数据是"+d;
-        })
+        });
+
+        let a=body.select('a')
+            .attr("name","link")
+            .attr("href","https://www.baidu.com")
+            .style("color","red");
     </script>
 </body>
 </html>
